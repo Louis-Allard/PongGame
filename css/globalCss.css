@@ -1,0 +1,11 @@
+body {
+    background-image : url("../pictures/fence01.jpg");
+    background-repeat: repeat;
+    margin: auto;
+    text-align: center;
+    color: white;
+}
+
+a {
+    color : yellow;
+}
