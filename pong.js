@@ -101,7 +101,6 @@ const render = function () {
     player.render();
     computer.render();
     ball.render();
-    console.log('Render func.');
 };
 
 //Animation

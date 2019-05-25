@@ -2,4 +2,9 @@ body {
     background-color: black;
     margin: auto;
     text-align: center;
+    color: white;
+}
+
+a {
+    color : yellow;
 }
