@@ -90,7 +90,7 @@ function Ball(x, y) {
 Ball.prototype.render = function () {
     context.beginPath();
     context.arc(this.x, this.y, this.radius, 2 * Math.PI, false);
-    context.fillStyle = "#3A9D23";
+    context.fillStyle = "#F7F70E";
     context.fill();
 };
 
