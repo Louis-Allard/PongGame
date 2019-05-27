@@ -22,6 +22,7 @@ const animate = window.requestAnimationFrame ||
     function (callback) { window.setTimeout(callback, 1000 / 60) };
 
 const canvas = document.createElement("canvas");
+const score = document.createElement("score");
 const width = 400;
 const height = 600;
 canvas.width = width;
@@ -34,14 +35,20 @@ const ball = new Ball(200, 300);
 
 //appeler le canavas au chargement
 window.onload = function () {
+    document.body.appendChild(score);
     document.body.appendChild(canvas);
     animate(step);
 };
 
+//score
+function Score() {
+  document.getElementsByTagName.score  = "toto";
+};
 const step = function () {
     update();
     render();
     animate(step);
+    score();
 };
 
 //Ajouter les paddles
