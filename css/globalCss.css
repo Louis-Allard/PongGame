@@ -9,3 +9,7 @@ body {
 a {
     color : yellow;
 }
+
+canvas {
+  background-image: url("../pictures/planet04.jpg");
+}

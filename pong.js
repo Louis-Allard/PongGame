@@ -96,12 +96,7 @@ Ball.prototype.render = function () {
 
 //Affichage
 const render = function () {
-    const img = new Image();
-    //context.fillStyle = "#3AF24B";
-    img.addEventListener('load',function(){
-      context.drawImage(img,width,height);
-    },true);
-    img.src = './pictures/planet04.jpg'; 
+    context.fillStyle = "#3AF24B";
     context.fillRect(0, 0, width, height);
     player.render();
     computer.render();
