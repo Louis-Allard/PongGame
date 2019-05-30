@@ -1,21 +1,17 @@
 /*
 
-|  _  \ /  _  \ |  \ | | /  ___| 
-| |_| | | | | | |   \| | | |     
-|  ___/ | | | | | |\   | | |  _  
-| |     | |_| | | | \  | | |_| | 
-|_|     \_____/ |_|  \_| \_____/ 
-
-/___  \ /  _  \ |_  | /  _  \ 
- ___| | | | | |   | | | |_| | 
-/  ___/ | |/| |   | | \___  | 
-| |___  | |_| |   | |  ___| | 
-|_____| \_____/   |_| |_____/ 
+ _  (`-')            <-. (`-')_                                                    
+ \-.(OO )      .->      \( OO) )    .->                                            
+ _.'    \ (`-')----. ,--./ ,--/  ,---(`-')      .----.    .----.    .--.  .----.   
+(_...--'' ( OO).-.  '|   \ |  | '  .-(OO )     \_,-.  |  /  ..  \  /_  | / ,-.  \  
+|  |_.' | ( _) | |  ||  . '|  |)|  | .-, \        .' .' |  /  \  .  |  | \ '-'   . 
+|  .___.'  \|  |)|  ||  |\    | |  | '.(_/      .'  /_  '  \  /  '  |  |  `- /  .' 
+|  |        '  '-'  '|  | \   | |  '-'  |      |      |  \  `'  /   |  |   .'  /   
+`--'         `-----' `--'  `--'  `-----'       `------'   `---''    `--'   `--' 
 
 */
 
 //initialisation de canvas
-
 const animate = window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
     window.mozRequestAnimationFrame ||
@@ -27,15 +23,32 @@ const height = 600;
 canvas.width = width;
 canvas.height = height;
 const context = canvas.getContext("2d");
-
 const player = new Player();
 const computer = new Computer();
 const ball = new Ball(200, 300);
+let vies = 3;
 
-//appeler le canavas au chargement
+//appeler canvas au chargement
 window.onload = function () {
     document.body.appendChild(canvas);
     animate(step);
+};
+
+//Calcul des vies
+function Vies() {
+  const v = document.getElementsByClassName('vie');
+  const t = document.getElementsByClassName('vie-text');
+  if (vies >= 2) {
+  vies = vies - 1;
+  v[0].innerHTML = ""; 
+  v[0].insertAdjacentText("afterbegin",vies);
+  }
+  else {
+    v[0].innerHTML = "";
+    t[0].innerHTML = "";
+    t[0].insertAdjacentText("afterbegin","Tu as perdu !");
+    alert('Gamer Over !')
+  }
 };
 
 const step = function () {
@@ -69,7 +82,6 @@ function Computer() {
 };
 
 // Affichage des Paddles
-
 Player.prototype.render = function () {
     this.paddle.render();
 };
@@ -104,7 +116,6 @@ const render = function () {
 };
 
 //Animation
-
 const update = function () {
     computer.update(ball);
     player.update();
@@ -126,12 +137,12 @@ Ball.prototype.update = function(paddle1,paddle2) {
       this.x = 395;
       this.x_speed = -this.x_speed;
     }
-  
     if(this.y < 0 || this.y > 600) { // a point was scored
       this.x_speed = 0;
       this.y_speed = 3;
       this.x = 200;
       this.y = 300;
+      Vies();
     }
   
     if(top_y > 300) {

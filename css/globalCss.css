@@ -9,3 +9,19 @@ body {
 a {
     color : yellow;
 }
+
+canvas {
+  background-image: url("../pictures/planet04.jpg");
+}
+
+.vie {
+    color : red;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.vie-text {
+    color : red;
+    font-weight: bold;
+    font-size: 2em;
+}
