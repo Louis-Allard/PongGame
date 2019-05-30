@@ -1,16 +1,13 @@
 /*
 
-|  _  \ /  _  \ |  \ | | /  ___| 
-| |_| | | | | | |   \| | | |     
-|  ___/ | | | | | |\   | | |  _  
-| |     | |_| | | | \  | | |_| | 
-|_|     \_____/ |_|  \_| \_____/ 
-
-/___  \ /  _  \ |_  | /  _  \ 
- ___| | | | | |   | | | |_| | 
-/  ___/ | |/| |   | | \___  | 
-| |___  | |_| |   | |  ___| | 
-|_____| \_____/   |_| |_____/ 
+ _  (`-')            <-. (`-')_                                                    
+ \-.(OO )      .->      \( OO) )    .->                                            
+ _.'    \ (`-')----. ,--./ ,--/  ,---(`-')      .----.    .----.    .--.  .----.   
+(_...--'' ( OO).-.  '|   \ |  | '  .-(OO )     \_,-.  |  /  ..  \  /_  | / ,-.  \  
+|  |_.' | ( _) | |  ||  . '|  |)|  | .-, \        .' .' |  /  \  .  |  | \ '-'   . 
+|  .___.'  \|  |)|  ||  |\    | |  | '.(_/      .'  /_  '  \  /  '  |  |  `- /  .' 
+|  |        '  '-'  '|  | \   | |  '-'  |      |      |  \  `'  /   |  |   .'  /   
+`--'         `-----' `--'  `--'  `-----'       `------'   `---''    `--'   `--' 
 
 */
 
@@ -22,34 +19,32 @@ const animate = window.requestAnimationFrame ||
     function (callback) { window.setTimeout(callback, 1000 / 60) };
 
 const canvas = document.createElement("canvas");
-const score = document.createElement("score");
 const width = 400;
 const height = 600;
 canvas.width = width;
 canvas.height = height;
 const context = canvas.getContext("2d");
-
 const player = new Player();
 const computer = new Computer();
 const ball = new Ball(200, 300);
 
 //appeler canvas au chargement
 window.onload = function () {
-    document.body.appendChild(score);
     document.body.appendChild(canvas);
     animate(step);
 };
 
 //score
 function Score() {
-  document.getElementsByTagName.score  = "toto";
+  let score = 0;
+  score = score + 1;
+  console.log('scoring : ' + score);
 };
 
 const step = function () {
     update();
     render();
     animate(step);
-    score();
 };
 
 //Ajouter les paddles
@@ -77,7 +72,6 @@ function Computer() {
 };
 
 // Affichage des Paddles
-
 Player.prototype.render = function () {
     this.paddle.render();
 };
@@ -125,7 +119,6 @@ Ball.prototype.update = function(paddle1,paddle2) {
     const top_y = this.y - 5;
     const bottom_x = this.x + 5;
     const bottom_y = this.y + 5;
-    const score = 0;
   
     if(this.x - 5 < 0) { //lorsque la balle tape le mur de gauche
       this.x = 5;
@@ -140,7 +133,7 @@ Ball.prototype.update = function(paddle1,paddle2) {
       this.y_speed = 3;
       this.x = 200;
       this.y = 300;
-      score = score +1
+      Score();
     }
   
     if(top_y > 300) {
