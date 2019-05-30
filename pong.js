@@ -12,7 +12,6 @@
 */
 
 //initialisation de canvas
-
 const animate = window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
     window.mozRequestAnimationFrame ||
@@ -27,7 +26,7 @@ const context = canvas.getContext("2d");
 const player = new Player();
 const computer = new Computer();
 const ball = new Ball(200, 300);
-let score = 0;
+let vies = 3;
 
 //appeler canvas au chargement
 window.onload = function () {
@@ -35,10 +34,21 @@ window.onload = function () {
     animate(step);
 };
 
-//score
-function Score() {
-  score = score + 1;
-  console.log('score : '  + score);
+//Calcul des vies
+function Vies() {
+  const v = document.getElementsByClassName('vie');
+  const t = document.getElementsByClassName('vie-text');
+  if (vies >= 2) {
+  vies = vies - 1;
+  v[0].innerHTML = ""; 
+  v[0].insertAdjacentText("afterbegin",vies);
+  }
+  else {
+    v[0].innerHTML = "";
+    t[0].innerHTML = "";
+    t[0].insertAdjacentText("afterbegin","Tu as perdu !");
+    alert('Gamer Over !')
+  }
 };
 
 const step = function () {
@@ -132,7 +142,7 @@ Ball.prototype.update = function(paddle1,paddle2) {
       this.y_speed = 3;
       this.x = 200;
       this.y = 300;
-      Score();
+      Vies();
     }
   
     if(top_y > 300) {

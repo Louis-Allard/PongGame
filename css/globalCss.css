@@ -14,11 +14,14 @@ canvas {
   background-image: url("../pictures/planet04.jpg");
 }
 
-score {
-    background-color: white;
-    display: block;
-    color : black;
-    width : 100px;
-    height: 20px;
-    text-align: left;
+.vie {
+    color : red;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.vie-text {
+    color : red;
+    font-weight: bold;
+    font-size: 2em;
 }
