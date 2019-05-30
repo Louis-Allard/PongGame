@@ -27,6 +27,7 @@ const context = canvas.getContext("2d");
 const player = new Player();
 const computer = new Computer();
 const ball = new Ball(200, 300);
+let score = 0;
 
 //appeler canvas au chargement
 window.onload = function () {
@@ -36,9 +37,8 @@ window.onload = function () {
 
 //score
 function Score() {
-  let score = 0;
   score = score + 1;
-  console.log('scoring : ' + score);
+  console.log('score : '  + score);
 };
 
 const step = function () {
@@ -127,7 +127,6 @@ Ball.prototype.update = function(paddle1,paddle2) {
       this.x = 395;
       this.x_speed = -this.x_speed;
     }
-  
     if(this.y < 0 || this.y > 600) { // a point was scored
       this.x_speed = 0;
       this.y_speed = 3;
