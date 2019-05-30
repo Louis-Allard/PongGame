@@ -33,7 +33,7 @@ const player = new Player();
 const computer = new Computer();
 const ball = new Ball(200, 300);
 
-//appeler le canavas au chargement
+//appeler canvas au chargement
 window.onload = function () {
     document.body.appendChild(score);
     document.body.appendChild(canvas);
@@ -44,6 +44,7 @@ window.onload = function () {
 function Score() {
   document.getElementsByTagName.score  = "toto";
 };
+
 const step = function () {
     update();
     render();
@@ -111,7 +112,6 @@ const render = function () {
 };
 
 //Animation
-
 const update = function () {
     computer.update(ball);
     player.update();
@@ -125,6 +125,7 @@ Ball.prototype.update = function(paddle1,paddle2) {
     const top_y = this.y - 5;
     const bottom_x = this.x + 5;
     const bottom_y = this.y + 5;
+    const score = 0;
   
     if(this.x - 5 < 0) { //lorsque la balle tape le mur de gauche
       this.x = 5;
@@ -139,6 +140,7 @@ Ball.prototype.update = function(paddle1,paddle2) {
       this.y_speed = 3;
       this.x = 200;
       this.y = 300;
+      score = score +1
     }
   
     if(top_y > 300) {
